@@ -1,5 +1,8 @@
 package seminars.second.hw;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,53 +28,54 @@ import seminars.second.simple_shopping_cart.Shop;
 
 class VehicleTest {
 
+    Car car;
+    Motorcycle motorcycle;
+
+    @BeforeEach
+    void initEach() {
+        this.car = new Car("company1", "model1", 2020);
+        this.motorcycle = new Motorcycle("company2", "model53535", 2021);
+    }
 
     @Test
     void carInstanceIsInstanceOfVehicle() {
-        Car car1 = new Car("company1", "model1", 2020);
-        assertThat(car1).isInstanceOf(Vehicle.class);
+        assertThat(car).isInstanceOf(Vehicle.class);
     }
 
     @Test
     void carObjectCreatedWith4Wheels() {
-        Car car2 = new Car("company3", "model3", 2019);
-        assertThat(car2.getNumWheels()).isEqualTo(4);
+        assertThat(car.getNumWheels()).isEqualTo(4);
     }
 
     @Test
     void motorcycleObjectCreatedWith2Wheels() {
-        Motorcycle motorcycle1 = new Motorcycle("company2", "model53535", 2021);
-        assertThat(motorcycle1.getNumWheels()).isEqualTo(2);
+        assertThat(motorcycle.getNumWheels()).isEqualTo(2);
     }
 
     @Test
     void carObjectHasSpeed60InTestDrive() {
-        Car car3 = new Car("company4", "model4", 2024);
-        car3.testDrive();
-        assertThat(car3.getSpeed()).isEqualTo(60);
+        car.testDrive();
+        assertThat(car.getSpeed()).isEqualTo(60);
     }
 
     @Test
     void motorcycleObjectHasSpeed75InTestDrive() {
-        Motorcycle motorcycle2 = new Motorcycle("company3", "model23242", 2023);
-        motorcycle2.testDrive();
-        assertThat(motorcycle2.getSpeed()).isEqualTo(75);
+        motorcycle.testDrive();
+        assertThat(motorcycle.getSpeed()).isEqualTo(75);
     }
 
     @Test
     void carSpeedIs0InParkingMode() {
-        Car car4 = new Car("company1", "model7", 2024);
-        car4.testDrive();
-        car4.park();
-        assertThat(car4.getSpeed()).isEqualTo(0);
+        car.testDrive();
+        car.park();
+        assertThat(car.getSpeed()).isEqualTo(0);
     }
 
     @Test
     void motorcycleSpeedIs0InParkingMode() {
-        Motorcycle motorcycle3 = new Motorcycle("company2", "model42", 2024);
-        motorcycle3.testDrive();
-        motorcycle3.park();
-        assertThat(motorcycle3.getSpeed()).isEqualTo(0);
+        motorcycle.testDrive();
+        motorcycle.park();
+        assertThat(motorcycle.getSpeed()).isEqualTo(0);
     }
 
 }
