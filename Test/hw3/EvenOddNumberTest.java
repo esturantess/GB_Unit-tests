@@ -17,4 +17,19 @@ public class EvenOddNumberTest {
     void oddNumberTest() {
         assertThat(evenOddNumber.evenOddNumber(1)).isEqualTo(false);
     }
+
+    @Test
+    void evenNumberNullTest() {
+        assertThat(evenOddNumber.evenOddNumber(0)).isEqualTo(true);
+    }
+
+    @Test
+    void oddNegativeNumberTest() {
+        assertThat(evenOddNumber.evenOddNumber(-5)).isEqualTo(false);
+    }
+
+    @Test
+    void evenNegativeNumberTest() {
+        assertThat(evenOddNumber.evenOddNumber(-100)).isEqualTo(true);
+    }
 }
