@@ -16,6 +16,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ShopTest {
 
+    private Shop shop;
+    private Cart cart;
+
+    private ByteArrayOutputStream output = new ByteArrayOutputStream();
+
+    @BeforeEach
+    void setup() {
+        shop = new Shop(getStoreItems());
+        cart = new Cart(shop);
+    }
+
     // Создаем набор продуктов для магазина:
     public static List<Product> getStoreItems() {
         List<Product> products = new ArrayList<>();
@@ -36,7 +47,6 @@ class ShopTest {
         return products;
     }
 
-    private ByteArrayOutputStream output = new ByteArrayOutputStream();
 
     // private Shop shop;
     // private Cart cart;
@@ -71,9 +81,6 @@ class ShopTest {
      */
     @Test
     void priceCartIsCorrectCalculated() {
-        // Arrange (Подготовка)
-        Shop shop = new Shop(Main.getStoreItems());
-        Cart cart = new Cart(shop);
         // Act (Выполнение)
         cart.addProductToCartByID(1); // 170+
         cart.addProductToCartByID(2); // 250+
@@ -89,9 +96,6 @@ class ShopTest {
      */
     @Test
     void priceCartProductsSameTypeIsCorrectCalculated() {
-        // Arrange
-        Shop shop = new Shop(Main.getStoreItems());
-        Cart cart = new Cart(shop);
         // Act
         cart.addProductToCartByID(1); // 170+
         cart.addProductToCartByID(1); // 170+
@@ -108,9 +112,6 @@ class ShopTest {
      */
     @Test
     void whenChangingCartCostRecalculationIsCalled() {
-        // Arrange
-        Shop shop = new Shop(Main.getStoreItems());
-        Cart cart = new Cart(shop);
         // Act
         cart.addProductToCartByID(1);
         cart.addProductToCartByID(3);
@@ -128,9 +129,6 @@ class ShopTest {
      */
     @Test
     void quantityProductsStoreChanging() {
-        // Arrange
-        Shop shop = new Shop(Main.getStoreItems());
-        Cart cart = new Cart(shop);
         int startSize = shop.getProductsShop().get(1).getQuantity();
         // Act
         cart.addProductToCartByID(2); // 1
@@ -149,9 +147,6 @@ class ShopTest {
      */
     @Test
     void lastProductsDisappearFromStore() {
-        // Arrange
-        Shop shop = new Shop(Main.getStoreItems());
-        Cart cart = new Cart(shop);
         // Act
         for (int i = 0; i < shop.getProductsShop().get(4).getQuantity(); i++) {
             cart.addProductToCartByID(4);
@@ -174,11 +169,8 @@ class ShopTest {
      */
     @Test
     void deletedProductIsReturnedToShop() {
-     // Arrange
-        Shop shop = new Shop(Main.getStoreItems());
-        Cart cart = new Cart(shop);
-        int productQuantity = shop.getProductsShop().get(1).getQuantity();
      // Act
+        int productQuantity = shop.getProductsShop().get(1).getQuantity();
         cart.addProductToCartByID(1);
         cart.addProductToCartByID(1);
         cart.addProductToCartByID(1);
@@ -200,9 +192,6 @@ class ShopTest {
     @ParameterizedTest
     @ValueSource(ints = { -1, -5})
     void incorrectProductSelectionCausesException(int i) {
-        // Arrange
-        Shop shop = new Shop(Main.getStoreItems());
-        Cart cart = new Cart(shop);
         // Act
         RuntimeException exception = assertThrows(RuntimeException.class, () -> {
             cart.addProductToCartByID(i);
@@ -220,9 +209,6 @@ class ShopTest {
      */
     @Test
     void incorrectProductRemoveCausesException() {
-        // Arrange
-        Shop shop = new Shop(Main.getStoreItems());
-        Cart cart = new Cart(shop);
         // Act
         RuntimeException exception = assertThrows(RuntimeException.class, () -> {
             cart.removeProductByID(1);
@@ -250,9 +236,6 @@ class ShopTest {
 
     @Test
     void testSum() {
-        // Arrange (Подготовка)
-        Shop shop = new Shop(getStoreItems());
-        Cart cart = new Cart(shop);
         // Act (Выполнение)
         cart.addProductToCartByID(2); // 250
         cart.addProductToCartByID(2); // 250
@@ -274,9 +257,6 @@ class ShopTest {
      @Timeout(value = 70, unit = TimeUnit.MILLISECONDS)
 //     @Disabled
      void optimizedTest() {
-         // Arrange (Подготовка)
-         Shop shop = new Shop(getStoreItems());
-         Cart cart = new Cart(shop);
          // Act (Выполнение)
          cart.addProductToCartByID(2); // 250
          cart.addProductToCartByID(2); // 250
