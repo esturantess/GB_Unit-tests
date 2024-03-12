@@ -70,7 +70,7 @@ class ShopTest {
      * Стоимость корзины посчиталась корректно
      */
     @Test
-    void priceCartIsCorrectCalculated(){
+    void priceCartIsCorrectCalculated() {
         // Arrange (Подготовка)
         Shop shop = new Shop(Main.getStoreItems());
         Cart cart = new Cart(shop);
@@ -80,115 +80,207 @@ class ShopTest {
         cart.addProductToCartByID(3); // 200 = 620
         // Assert (Проверка утверждения)
         assertThat(cart.getTotalPrice()).isEqualTo(620);
+    }
+    /**
+     * 2.2. Создайте модульный тест для проверки, что общая стоимость
+     * корзины с множественными экземплярами одного и того же продукта корректно рассчитывается.
+     * <br><b>Ожидаемый результат:</b>
+     * Стоимость корзины посчиталась корректно
+     */
+    @Test
+    void priceCartProductsSameTypeIsCorrectCalculated() {
+        // Arrange
+        Shop shop = new Shop(Main.getStoreItems());
+        Cart cart = new Cart(shop);
+        // Act
+        cart.addProductToCartByID(1); // 170+
+        cart.addProductToCartByID(1); // 170+
+        cart.addProductToCartByID(1); // 170+
+        // Assert
+        assertThat(cart.getTotalPrice()).isEqualTo(510);
+    }
 
-//    /**
-//     * 2.2. Создайте модульный тест для проверки, что общая стоимость
-//     * корзины с множественными экземплярами одного и того же продукта корректно рассчитывается.
-//     * <br><b>Ожидаемый результат:</b>
-//     * Стоимость корзины посчиталась корректно
-//     */
-//    @Test
-//    void priceCartProductsSameTypeIsCorrectCalculated() {
-//        // Arrange
-//
-//        // Act
-//
-//        // Assert
-//
-//    }
-//
-//    /**
-//     * 2.3. Напишите модульный тест для проверки, что при удалении
-//     * товара из корзины происходит перерасчет общей стоимости корзины.
-//     * <br><b>Ожидаемый результат:</b>
-//     * Вызывается метод пересчета стоимости корзины, стоимость корзины меняется
-//     */
-//    @Test
-//    void whenChangingCartCostRecalculationIsCalled() {
-//
-//    }
-//
-//    /**
-//     * 2.4. Разработайте модульный тест для проверки, что при добавлении определенного количества товара в корзину,
-//     * общее количество этого товара в магазине соответствующим образом уменьшается.
-//     * <br><b>Ожидаемый результат:</b>
-//     * Количество товара в магазине уменьшается на число продуктов в корзине пользователя
-//     */
-//
-//    void quantityProductsStoreChanging() {
-//
-//    }
-//
-//    /**
-//     * 2.5. Создайте модульный тест для проверки, что если пользователь забирает все имеющиеся продукты о
-//     * пределенного типа из магазина, эти продукты больше не доступны для заказа.
-//     * <br><b>Ожидаемый результат:</b>
-//     * Больше такой продукт заказать нельзя, он не появляется на полке
-//     */
-//
-//    void lastProductsDisappearFromStore() {
-//
-//    }
-//
-//    /**
-//     * 2.6. Напишите модульный тест для проверки, что при удалении товара из корзины,
-//     * общее количество этого товара в магазине соответствующим образом увеличивается.
-//     * <br><b>Ожидаемый результат:</b>
-//     * Количество продуктов этого типа на складе увеличивается на число удаленных из корзины продуктов
-//     */
-//    void deletedProductIsReturnedToShop() {
-//
-//    }
-//
-//    /**
-//     * 2.7. Разработайте параметризованный модульный тест для проверки,
-//     * что при вводе неверного идентификатора товара генерируется исключение RuntimeException.
-//     * <br><b>Ожидаемый результат:</b>
-//     * Исключение типа RuntimeException и сообщение Не найден продукт с id
-//     * *Сделать тест параметризованным
-//     */
-//    //@Test
-//    void incorrectProductSelectionCausesException(int i) {
-//
-//    }
-//
-//    /**
-//     * 2.8.      * 2.8. Создайте модульный тест для проверки, что при попытке удалить из корзины больше товаров,
-//     * чем там есть, генерируется исключение RuntimeException.удаляет продукты до того, как их добавить)
-//     * <br><b>Ожидаемый результат:</b> Исключение типа NoSuchFieldError и сообщение "В корзине не найден продукт с id"
-//     */
-//    @Test
-//    void incorrectProductRemoveCausesException() {
-//
-//    }
-//
-//    /**
-//     * 2.9. Нужно восстановить тест
-//     */
-//    // boolean Сломанный-Тест() {
-//    //          // Assert (Проверка утверждения)
-//    //          assertThat(cart.getTotalPrice()).isEqualTo(cart.getTotalPrice());
-//    //          // Act (Выполнение)
-//    //          cart.addProductToCartByID(2); // 250
-//    //          cart.addProductToCartByID(2); // 250
-//    //          // Arrange (Подготовка)
-//    //          Shop shop = new Shop(getStoreItems());
-//    //          Cart cart = new Cart(shop);
-//    //      }
-//
-//    @Test
-//    void testSUM() {
-//
-//    }
-//
-//    /**
-//     * 2.10. Нужно оптимизировать тестовый метод, согласно следующим условиям:
-//     * <br> 1. Отображаемое имя - "Advanced test for calculating TotalPrice"
-//     * <br> 2. Тест повторяется 10 раз
-//     * <br> 3. Установлен таймаут на выполнение теста 70 Миллисекунд (unit = TimeUnit.MILLISECONDS)
-//     * <br> 4. После проверки работоспособности теста, его нужно выключить
-//     */
-//
-//   // ...
-}
+    /**
+     * 2.3. Напишите модульный тест для проверки, что при удалении
+     * товара из корзины происходит перерасчет общей стоимости корзины.
+     * <br><b>Ожидаемый результат:</b>
+     * Вызывается метод пересчета стоимости корзины, стоимость корзины меняется
+     */
+    @Test
+    void whenChangingCartCostRecalculationIsCalled() {
+        // Arrange
+        Shop shop = new Shop(Main.getStoreItems());
+        Cart cart = new Cart(shop);
+        // Act
+        cart.addProductToCartByID(1);
+        cart.addProductToCartByID(3);
+        cart.addProductToCartByID(2);
+        cart.removeProductByID(1);
+        // Assert
+        assertThat(cart.getTotalPrice()).isEqualTo(450);
+    }
+
+    /**
+     * 2.4. Разработайте модульный тест для проверки, что при добавлении определенного количества товара в корзину,
+     * общее количество этого товара в магазине соответствующим образом уменьшается.
+     * <br><b>Ожидаемый результат:</b>
+     * Количество товара в магазине уменьшается на число продуктов в корзине пользователя
+     */
+    @Test
+    void quantityProductsStoreChanging() {
+        // Arrange
+        Shop shop = new Shop(Main.getStoreItems());
+        Cart cart = new Cart(shop);
+        int startSize = shop.getProductsShop().get(1).getQuantity();
+        // Act
+        cart.addProductToCartByID(2); // 1
+        cart.addProductToCartByID(2); // 2
+        cart.addProductToCartByID(2); // 3
+        int currentSize = shop.getProductsShop().get(1).getQuantity();
+        // Assert
+        assertThat(startSize - currentSize).isEqualTo(3);
+    }
+
+    /**
+     * 2.5. Создайте модульный тест для проверки, что если пользователь забирает все имеющиеся продукты
+     * определенного типа из магазина, эти продукты больше не доступны для заказа.
+     * <br><b>Ожидаемый результат:</b>
+     * Больше такой продукт заказать нельзя, он не появляется на полке
+     */
+    @Test
+    void lastProductsDisappearFromStore() {
+        // Arrange
+        Shop shop = new Shop(Main.getStoreItems());
+        Cart cart = new Cart(shop);
+        // Act
+        for (int i = 0; i < shop.getProductsShop().get(4).getQuantity(); i++) {
+            cart.addProductToCartByID(4);
+        }
+        // Assert
+        assertThat(shop.getProductsShop().get(3).getQuantity()).isEqualTo(0);
+
+        // 2
+        System.setOut(new PrintStream(output));
+        cart.addProductToCartByID(4);
+        assertEquals("Этого товара нет в наличии", output.toString().trim());
+        System.setOut(null);
+    }
+
+    /**
+     * 2.6. Напишите модульный тест для проверки, что при удалении товара из корзины,
+     * общее количество этого товара в магазине соответствующим образом увеличивается.
+     * <br><b>Ожидаемый результат:</b>
+     * Количество продуктов этого типа на складе увеличивается на число удаленных из корзины продуктов
+     */
+    @Test
+    void deletedProductIsReturnedToShop() {
+     // Arrange
+        Shop shop = new Shop(Main.getStoreItems());
+        Cart cart = new Cart(shop);
+        int productQuantity = shop.getProductsShop().get(1).getQuantity();
+     // Act
+        cart.addProductToCartByID(1);
+        cart.addProductToCartByID(1);
+        cart.addProductToCartByID(1);
+        cart.addProductToCartByID(1);
+        cart.removeProductByID(1);
+        int currentQuantity = shop.getProductsShop().get(0).getQuantity();
+     // Assert
+        assertEquals(3, productQuantity - currentQuantity);
+
+    }
+
+    /**
+     * 2.7. Разработайте параметризованный модульный тест для проверки,
+     * что при вводе неверного идентификатора товара генерируется исключение RuntimeException.
+     * <br><b>Ожидаемый результат:</b>
+     * Исключение типа RuntimeException и сообщение Не найден продукт с id
+     * *Сделать тест параметризованным
+     */
+    @ParameterizedTest
+    @ValueSource(ints = { -1, -5})
+    void incorrectProductSelectionCausesException(int i) {
+        // Arrange
+        Shop shop = new Shop(Main.getStoreItems());
+        Cart cart = new Cart(shop);
+        // Act
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
+            cart.addProductToCartByID(i);
+        });
+        // Assert
+        String expectedMessage = "Не найден продукт с id: " + i;
+        String actualMessage = exception.getMessage();
+        assertEquals(expectedMessage, actualMessage);
+    }
+
+    /**
+     * 2.8. Создайте модульный тест для проверки, что при попытке удалить из корзины больше товаров,
+     * чем там есть, генерируется исключение RuntimeException. (удаляет продукты до того, как их добавить)
+     * <br><b>Ожидаемый результат:</b> Исключение типа RuntimeException и сообщение "В корзине не найден продукт с id"
+     */
+    @Test
+    void incorrectProductRemoveCausesException() {
+        // Arrange
+        Shop shop = new Shop(Main.getStoreItems());
+        Cart cart = new Cart(shop);
+        // Act
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
+            cart.removeProductByID(1);
+        });
+        // Assert
+        String expectedMessage = "В корзине не найден продукт с id: " + 1;
+        String actualMessage = exception.getMessage();
+        assertEquals(expectedMessage, actualMessage);
+    }
+
+
+    /**
+     * 2.9. Нужно восстановить тест
+     */
+    // boolean Сломанный-Тест() {
+    //          // Assert (Проверка утверждения)
+    //          assertThat(cart.getTotalPrice()).isEqualTo(cart.getTotalPrice());
+    //          // Act (Выполнение)
+    //          cart.addProductToCartByID(2); // 250
+    //          cart.addProductToCartByID(2); // 250
+    //          // Arrange (Подготовка)
+    //          Shop shop = new Shop(getStoreItems());
+    //          Cart cart = new Cart(shop);
+    //      }
+
+    @Test
+    void testSum() {
+        // Arrange (Подготовка)
+        Shop shop = new Shop(getStoreItems());
+        Cart cart = new Cart(shop);
+        // Act (Выполнение)
+        cart.addProductToCartByID(2); // 250
+        cart.addProductToCartByID(2); // 250
+        // Assert (Проверка утверждения)
+        assertThat(cart.getTotalPrice()).isEqualTo(500);
+    }
+
+     /**
+     * 2.10. Нужно оптимизировать тестовый метод, согласно следующим условиям:
+     * <br> 1. Отображаемое имя - "Advanced test for calculating TotalPrice"
+     * <br> 2. Тест повторяется 10 раз
+     * <br> 3. Установлен таймаут на выполнение теста 70 Миллисекунд (unit = TimeUnit.MILLISECONDS)
+     * <br> 4. После проверки работоспособности теста, его нужно выключить
+     */
+
+
+     @DisplayName("Advanced test for calculating TotalPrice")
+     @RepeatedTest(10)
+     @Timeout(value = 70, unit = TimeUnit.MILLISECONDS)
+//     @Disabled
+     void optimizedTest() {
+         // Arrange (Подготовка)
+         Shop shop = new Shop(getStoreItems());
+         Cart cart = new Cart(shop);
+         // Act (Выполнение)
+         cart.addProductToCartByID(2); // 250
+         cart.addProductToCartByID(2); // 250
+         // Assert (Проверка утверждения)
+         assertThat(cart.getTotalPrice()).isEqualTo(500);
+     }
 }
