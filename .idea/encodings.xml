@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/unit-tests-4 (Код семинара)/unit-tests-4 (Код семинара)/Test/seminars/fourth/book/BookServiceTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/unit-tests-4 (Код семинара)/unit-tests-4 (Код семинара)/Test/seminars/fourth/database/DataProcessorTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/unit-tests-4 (Код семинара)/unit-tests-4 (Код семинара)/Test/seminars/fourth/hotel/BookingServiceTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/unit-tests-4 (Код семинара)/unit-tests-4 (Код семинара)/Test/seminars/fourth/weather/WeatherReporterTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/unit-tests-4 (Код семинара)/unit-tests-4 (Код семинара)/src/seminars/fourth/Main.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/unit-tests-4 (Код семинара)/unit-tests-4 (Код семинара)/src/seminars/fourth/book/Book.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/unit-tests-4 (Код семинара)/unit-tests-4 (Код семинара)/src/seminars/fourth/book/BookRepository.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/unit-tests-4 (Код семинара)/unit-tests-4 (Код семинара)/src/seminars/fourth/book/BookService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/unit-tests-4 (Код семинара)/unit-tests-4 (Код семинара)/src/seminars/fourth/book/InMemoryBookRepository.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/unit-tests-4 (Код семинара)/unit-tests-4 (Код семинара)/src/seminars/fourth/message/NotificationService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/unit-tests-4 (Код семинара)/unit-tests-4 (Код семинара)/src/seminars/fourth/weather/WeatherReporter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/unit-tests-4 (Код семинара)/unit-tests-4 (Код семинара)/src/seminars/fourth/weather/WeatherService.java" charset="UTF-8" />
+  </component>
+</project>
