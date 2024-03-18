@@ -12,13 +12,11 @@ import static org.mockito.Mockito.*;
 
 class BookServiceTest {
 
-    @Mock
-    private BookRepository bookRepositoryMock = mock(BookRepository.class);
+    BookRepository bookRepositoryMock = mock(BookRepository.class);
     BookService bookService = new BookService(bookRepositoryMock);
 
     @Test
     void bookServiceFindBookByIdTest() {
-
         when(bookService.findBookById("1")).thenReturn(new Book("1", "Title", "Author"));
 
         assertEquals("1", bookService.findBookById("1").getId());
@@ -28,7 +26,6 @@ class BookServiceTest {
 
     @Test
     void bookServiceFindAllBooksTest() {
-
         when(bookService.findAllBooks()).thenReturn(Arrays.asList(new Book("1"), new Book("2"), new Book("3")));
 
         assertEquals(3, bookRepositoryMock.findAll().size());
